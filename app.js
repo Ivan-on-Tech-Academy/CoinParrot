@@ -16,7 +16,7 @@ const port = process.env.PORT  || 8000;
 * Routes Definitions
 */
 app.get('/', (req, res) => {
-    res.status(200).send('CoinGoose: Top Coin List');
+    res.status(200).send('<h1>CoinParrot: Top Coin List</h1>');
 });
 
 /**
