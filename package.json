@@ -1,27 +1,22 @@
 {
-  "name": "CoinGoose",
-  "version": "1.0.0",
-  "description": "Crypto coin market cap list website",
-  "main": "index.js",
-  "dependencies": {
-    "express": "^4.17.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  },
+  "name": "coinparrot",
+  "version": "0.0.1",
+  "description": "Ivan On Tech Academy bootcamp example project for crypto coin market cap website",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jermay/CoinGoose.git"
+    "url": "git+https://github.com/Ivan-on-Tech-Academy/CoinParrot.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Ivan-on-Tech-Academy, jermay",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jermay/CoinGoose/issues"
+    "url": "https://github.com/Ivan-on-Tech-Academy/CoinParrot/issues"
   },
-  "homepage": "https://github.com/jermay/CoinGoose#readme"
+  "homepage": "https://github.com/Ivan-on-Tech-Academy/CoinParrot#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
