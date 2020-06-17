@@ -1,5 +1,24 @@
 body {
     color: rgba(23, 24, 27, 0.85);
-    font: 'Helvetica Neue';
-    font-size: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+table {
+    border-spacing: 2px;
+    border-color: gray;
+    width: 100%;
+}
+
+tr {
+    border-collapse: collapse;
+    table-layout: auto;
+    width: 100%;
+}
+
+td, th {
+    border-bottom: solid 1px lightgray;
+    padding: 0px 7px;
+    vertical-align: middle;
+    text-align: right;
 }

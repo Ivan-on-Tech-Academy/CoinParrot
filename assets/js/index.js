@@ -75,10 +75,10 @@ const fmt = {
     p2: new Intl.NumberFormat('en-US', {style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2}),
 };
 
-async function createCoinTable(coinData) {
+function createCoinTable(coinData) {
     console.log('creating coin table');
     // clear out any old elements
-    $('tr.coin-row').remove();
+    $('tr.content-row').remove();
     const coinTable = $('#coinTable');    
 
     // create a table row for each coin in the list
@@ -86,7 +86,7 @@ async function createCoinTable(coinData) {
         let coin = coinData[key];
         // console.log(`creating table row for: ${coin.name}`);
         coinTable.append(
-            $('<tr class="coin-row"></tr>').append(
+            $('<tr class="content-row"></tr>').append(
                 $('<td class="text-left"></td>').text(coin.market_cap_rank),
                 $('<td class="text-left"></td>').append(
                     $('<div></div>').append(
@@ -103,7 +103,7 @@ async function createCoinTable(coinData) {
     }
 }
 
-//sorting
+//sorting coin table
 $('a.sortable-by-id').click(function() {
     if (lastSort == 'id_asc') {
         console.log('Sorting by name DESC');
