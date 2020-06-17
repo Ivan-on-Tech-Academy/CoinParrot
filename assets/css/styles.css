@@ -38,6 +38,11 @@ td, th {
     text-align: right;
 }
 
+.sortable-link {
+    color: rgba(23, 24, 27, 0.85);
+    text-decoration: underline;
+}
+
 .positive-change {
     color: green;
 }

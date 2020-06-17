@@ -1,30 +1,31 @@
+/* DATA_SOURCE:
+    'TEST' (default) will fetch from the JSON file
+    'LIVE' will fetch from the API    
+*/
+const DATA_SOURCE = 'LIVE';
+
+async function refreshTabe() {
+    let data = await getData();
+    createTable(data);
+}
+refreshTabe();
+
 function getData() {
-    let url = `https://api.coingecko.com/api/v3/exchanges?&per_page=10`;
+    let url = '/assets/js/test-data-exchanges.json';
+    if (DATA_SOURCE == 'LIVE') {
+    url = `https://api.coingecko.com/api/v3/exchanges?&per_page=10`;
+    } 
     console.log('api url: ', url);
-    fetch(url)
+    return fetch(url)
         .then(function (response) {
             return response.json();
         }).then(function (data) {
             console.log('API fetch result: ', data);
-            createTable(data);
+            return data;
         }).catch(function (error) {
             console.log(error);
         });
 }
-
-// live data
-getData();
-
-// test data
-// fetch('/assets/js/test-data-exchanges.json')
-//     .then(function (response) {
-//         return response.json();
-//     }).then(function (data) {
-//         console.log('Test data: ', data);
-//         createTable(data);
-//     }).catch(function (error) {
-//         console.log(error);
-//     });
 
 function createTable(data) {
     console.log('creatting exchanges table');
@@ -47,4 +48,20 @@ function createTable(data) {
             )
         );
     }
+}
+
+$('a.sortable-link').click(function () {
+    let target = $('this');
+    let a = target.prevObject[0].activeElement;
+    console.log('sortable-link clicked: ', a);
+
+    let order = getSortOrder(a.name);
+    sortExchangeList(a.name, order);
+});
+
+async function sortExchangeList(byColumnName, order) {
+    console.log(`sort coin list by ${byColumnName}`);
+    data = await getData();
+    sortData(data, byColumnName, order);
+    createTable(data);
 }

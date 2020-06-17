@@ -41,20 +41,21 @@
             <div class="app-tab" id="tab-crypto">
                 <table id="coinTable" class="app-tab text-right">
                     <tr>
-                        <th class="text-left">Rank</th>
-                        <th class="text-left"><a href="#" class="sortable-by-id">Name</a></th>
-                        <th class=""><a href="#" class="sortable-by-market-cap">Market Cap</a></th>
-                        <th class="">Price</th>
-                        <th class=""><a href="#" class="sortable-by-volume">Volume (24h)</a></th>
-                        <th class="">Circulating Supply</th>
-                        <th class="">Change (24h)</th>
-                        <th class="">Price Grapgh (7d)</th>
+                        <th class="text-left"><a href="#" class="sortable-link" name="market_cap_rank">Rank</a></th>
+                        <th class="text-left"><a href="#" class="sortable-link" name="name">Name</a></th>
+                        <th><a href="#" class="sortable-link" name="market_cap">Market Cap</a></th>
+                        <th><a href="#" class="sortable-link" name="current_price">Price</a></th>
+                        <th><a href="#" class="sortable-link" name="total_volume">Volume (24h)</a></th>
+                        <th><a href="#" class="sortable-link" name="circulating_supply">Circulating Supply</a></th>
+                        <th><a href="#" class="sortable-link" name="price_change_24h">Change (24h)</a></th>
+                        <th>Price Grapgh (7d)</th>
                     </tr>
                 </table>
             </div>
         </div>
 
         <!-- load our javascript -->
+        <script src="/assets/js/utils.js"></script>
         <script src="/assets/js/index.js"></script>
     </body>
 </html>
