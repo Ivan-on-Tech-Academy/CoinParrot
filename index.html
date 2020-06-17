@@ -15,32 +15,43 @@
         <link rel="stylesheet" href="/assets/css/styles.css">
     </head>
     <body>
-        <h1>Coin Parrot</h1>
-        <p>Ivan on Tech Academy bootcamp sample project</p>
+        <nav class="navbar navbar-light bg-white app-navbar" style="border-bottom: solid 1px lightgray">
+            <a class="navbar-brand" href="/">
+                <img id="logo" src="/assets/images/CoinParrotLogo_45x45.png" alt="CoinParrot Logo">
+                ParrotCoinMarketCap
+            </a>
+        </nav>
 
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-              <a class="nav-link app-tab-link active" id="link-tab-crypto" href="/">Cryptocurrencies</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link app-tab-link" id="link-tab-exchange" href="/exchanges.html">Exchanges</a>
-            </li>
-        </ul>
+        <div class="container">
+            <div class="app-section-title">
+                <h1> Top 10 Cryptocurrencies by Market Capitalization</h1>
+                <p>Ivan on Tech Academy bootcamp sample project</p>
+            </div>
 
-        <!-- container for coin top list -->
-        <div class="app-tab" id="tab-crypto">
-            <table id="coinTable" class="app-tab text-right">
-                <tr>
-                    <th class="text-left">Rank</th>
-                    <th class="text-left"><a href="#" class="sortable-by-id">Name</a></th>
-                    <th class=""><a href="#" class="sortable-by-market-cap">Market Cap</a></th>
-                    <th class="">Price</th>
-                    <th class=""><a href="#" class="sortable-by-volume">Volume (24h)</a></th>
-                    <th class="">Circulating Supply</th>
-                    <th class="">Change (24h)</th>
-                    <th class="">Price Grapgh (7d)</th>
-                </tr>
-            </table>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                <a class="nav-link app-tab-link active" id="link-tab-crypto" href="/">Cryptocurrencies</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link app-tab-link" id="link-tab-exchange" href="/exchanges.html">Exchanges</a>
+                </li>
+            </ul>
+
+            <!-- container for coin top list -->
+            <div class="app-tab" id="tab-crypto">
+                <table id="coinTable" class="app-tab text-right">
+                    <tr>
+                        <th class="text-left">Rank</th>
+                        <th class="text-left"><a href="#" class="sortable-by-id">Name</a></th>
+                        <th class=""><a href="#" class="sortable-by-market-cap">Market Cap</a></th>
+                        <th class="">Price</th>
+                        <th class=""><a href="#" class="sortable-by-volume">Volume (24h)</a></th>
+                        <th class="">Circulating Supply</th>
+                        <th class="">Change (24h)</th>
+                        <th class="">Price Grapgh (7d)</th>
+                    </tr>
+                </table>
+            </div>
         </div>
 
         <!-- load our javascript -->

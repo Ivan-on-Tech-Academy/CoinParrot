@@ -96,7 +96,7 @@ function createCoinTable(coinData) {
                 $('<td></td>').text(fmt.c.format(coin.current_price)),
                 $('<td></td>').text(fmt.c0.format(coin.total_volume)),
                 $('<td></td>').text(fmt.n0.format(coin.circulating_supply)),
-                $('<td></td>').text(fmt.p2.format(coin.price_change_percentage_24h/100)),
+                $(`<td class="${coin.price_change_percentage_24h > 0 ? 'positive-change' : 'negative-change'}"></td>`).text(fmt.p2.format(coin.price_change_percentage_24h/100)),
                 $('<td></td>').text(''), // price graph?
             )
         );

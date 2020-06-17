@@ -4,9 +4,24 @@ body {
     font-size: 15px;
 }
 
+app-navbar {
+    border-bottom: solid 1px lightgray;
+}
+
+.app-section-title {
+    padding-top: 1rem;
+    text-align: center;
+}
+div.app-section-title > h1 {
+    font-size: 25px;
+}
+div.app-section-title > p {
+    color: gray;
+}
+
 table {
     border-spacing: 2px;
-    border-color: gray;
+    border-color: lightgray;
     width: 100%;
 }
 
@@ -21,4 +36,12 @@ td, th {
     padding: 0px 7px;
     vertical-align: middle;
     text-align: right;
+}
+
+.positive-change {
+    color: green;
+}
+
+.negative-change {
+    color: red;
 }
