@@ -30,10 +30,23 @@
 
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                <a class="nav-link app-tab-link" id="link-tab-crypto" href="/">Cryptocurrencies</a>
+                    <a class="nav-link app-tab-link" id="link-tab-crypto" href="/">Cryptocurrencies</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link app-tab-link active" id="link-tab-exchange" href="/exchanges.html">Exchanges</a>
+                    <a class="nav-link app-tab-link active" id="link-tab-exchange" href="/exchanges.html">Exchanges</a>
+                </li>
+                <!-- pagination -->
+                <li class="nav-item ml-auto">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item app-page-prev">
+                                <a class="page-link app-page-prev" href="#">Prev 100</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link app-page-next" href="#">Next 100</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </li>
             </ul>
 
@@ -49,10 +62,22 @@
                         <!-- <th class="col">Volume Graph (7d)</th> -->
                     </tr>
                 </table>
+                <!-- pagination -->
+                <nav class="mt-2" aria-label="Page navigation">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item app-page-prev">
+                            <a class="page-link app-page-prev" href="#">Prev 100</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link app-page-next" href="#">Next 100</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
 
         <script src="/assets/js/utils.js"></script>
+        <script src="/assets/js/common.js"></script>
         <script src="/assets/js/exchanges.js"></script>
     </body>
 </html>

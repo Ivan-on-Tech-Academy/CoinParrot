@@ -2,7 +2,16 @@
     'TEST' (default) will fetch from the JSON file
     'LIVE' will fetch from the API    
 */
-const DATA_SOURCE = 'LIVE';
+const DATA_SOURCES = {
+    test: 'TEST',
+    live: 'LIVE',    
+};
+const DATA_SOURCE = DATA_SOURCES.live;
+const API_BASE_URL = 'https://api.coingecko.com/api/v3';
+const TEST_DATA_URL = '/assets/js/test-data-exchanges.json';
+const PAGE_SIZE = 100;
+let curPageNum = 1;
+let totalPages = 1;
 
 async function refreshTabe() {
     let data = await getData();
@@ -13,14 +22,14 @@ refreshTabe();
 function getData() {
     let url = '/assets/js/test-data-exchanges.json';
     if (DATA_SOURCE == 'LIVE') {
-    url = `https://api.coingecko.com/api/v3/exchanges?&per_page=10`;
+        url = `${API_BASE_URL}/exchanges?&per_page=${PAGE_SIZE}&page=${curPageNum}`;
     } 
     console.log('api url: ', url);
     return fetch(url)
         .then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log('API fetch result: ', data);
+            console.log(`fetch returnd ${data.length} results`);
             return data;
         }).catch(function (error) {
             console.log(error);
@@ -65,3 +74,34 @@ async function sortExchangeList(byColumnName, order) {
     sortData(data, byColumnName, order);
     createTable(data);
 }
+
+// Pagination
+// Next
+let prevButton = $('a.app-page-prev');
+
+$('a.app-page-next').click(async function() {
+    curPageNum += 1;    
+    refreshTabe();
+    hideShowPrev();
+});
+
+// previous
+$('a.app-page-prev').click(function() {
+    if (curPageNum === 1) {
+        return; // already at first page
+    }    
+    curPageNum -= 1;
+    refreshTabe();
+    hideShowPrev();
+});
+
+function hideShowPrev() {    
+    if (curPageNum === 1) {
+        $('li.app-page-prev').hide();
+    } else {
+        $('li.app-page-prev').show();
+    }
+}
+
+// the current page will be 1 when the page loads so hide prev
+hideShowPrev();
