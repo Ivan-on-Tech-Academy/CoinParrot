@@ -1,17 +1,19 @@
-/* DATA_SOURCE:
-    'TEST' (default) will fetch from the JSON file
-    'LIVE' will fetch from the API    
+/* Get the exchange data from the CoinGecko API
+   see the docs here https://www.coingecko.com/en/api
 */
 const DATA_SOURCES = {
-    test: 'TEST',
-    live: 'LIVE',    
+    test: {
+        name: 'TEST',
+        baseUrl: '/assets/js/test-data-exchanges.json'
+    },
+    live: {
+        name: 'LIVE',
+        baseUrl: 'https://api.coingecko.com/api/v3'
+    }
 };
 const DATA_SOURCE = DATA_SOURCES.live;
-const API_BASE_URL = 'https://api.coingecko.com/api/v3';
-const TEST_DATA_URL = '/assets/js/test-data-exchanges.json';
 const PAGE_SIZE = 100;
 let curPageNum = 1;
-let totalPages = 1;
 
 async function refreshTabe() {
     let data = await getData();
@@ -20,9 +22,9 @@ async function refreshTabe() {
 refreshTabe();
 
 function getData() {
-    let url = '/assets/js/test-data-exchanges.json';
-    if (DATA_SOURCE == 'LIVE') {
-        url = `${API_BASE_URL}/exchanges?&per_page=${PAGE_SIZE}&page=${curPageNum}`;
+    let url = DATA_SOURCE.baseUrl;
+    if (DATA_SOURCE.name == DATA_SOURCES.live.name) {
+        url += `/exchanges?&per_page=${PAGE_SIZE}&page=${curPageNum}`;
     } 
     console.log('api url: ', url);
     return fetch(url)
@@ -79,7 +81,10 @@ async function sortExchangeList(byColumnName, order) {
 // Next
 let prevButton = $('a.app-page-prev');
 
-$('a.app-page-next').click(async function() {
+$('a.app-page-next').click(function() {
+    if (DATA_SOURCE.name == DATA_SOURCES.test.name) {
+        return; //test data is static
+    }
     curPageNum += 1;    
     refreshTabe();
     hideShowPrev();
