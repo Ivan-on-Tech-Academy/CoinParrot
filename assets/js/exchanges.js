@@ -53,7 +53,7 @@ function createTable(data) {
                     $('<div></div>').append(
                         `<img src="${exchange.image}" width="16" height="16"> ${exchange.name}`
                     )),
-                $('<td ></td>').text(fmt.n0.format(exchange.trade_volume_24h_btc_normalized) + ' BTC'),
+                $('<td class="text-right"></td>').text(fmt.n0.format(exchange.trade_volume_24h_btc_normalized) + ' BTC'),
             )
         );
     }
