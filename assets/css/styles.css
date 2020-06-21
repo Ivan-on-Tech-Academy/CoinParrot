@@ -1,0 +1,33 @@
+body {
+    color: rgba(23, 24, 27, 0.85);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+app-navbar {
+    border-bottom: solid 1px lightgray;
+}
+
+.app-section-title {
+    padding-top: 1rem;
+    text-align: center;
+}
+div.app-section-title > h1 {
+    font-size: 25px;
+}
+div.app-section-title > p {
+    color: gray;
+}
+
+.sortable-link {
+    color: rgba(23, 24, 27, 0.85);
+    text-decoration: underline;
+}
+
+.positive-change {
+    color: green;
+}
+
+.negative-change {
+    color: red;
+}

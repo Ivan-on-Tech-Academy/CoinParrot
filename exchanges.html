@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Coin Parrot</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" >
+
+        <!-- load boootstrap, jQuery, fetch -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="/assets/lib/fetch.umd.js"></script>
+        <link rel="stylesheet" href="/assets/css/styles.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-light bg-white app-navbar" style="border-bottom: solid 1px lightgray">
+            <a class="navbar-brand" href="/">
+                <img id="logo" src="/assets/images/CoinParrotLogo_45x45.png" alt="CoinParrot Logo">
+                ParrotCoinMarketCap
+            </a>
+        </nav>
+
+        <div class="container">
+            <div class="app-section-title">
+                <h1>Top 100 Cryptocurrency Exchanges</h1>
+                <p>Ivan on Tech Academy bootcamp sample project</p>
+            </div>
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link app-tab-link" id="link-tab-crypto" href="/">Cryptocurrencies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link app-tab-link active" id="link-tab-exchange" href="/exchanges.html">Exchanges</a>
+                </li>
+                <!-- pagination -->
+                <li class="nav-item ml-auto">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item app-page-prev">
+                                <a class="page-link app-page-prev" href="#">Prev 100</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link app-page-next" href="#">Next 100</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </li>
+            </ul>
+
+            <div class="container app-tab" id="tab-exchange">
+                <table class="table app-tab" id="exchangeTable">
+                    <tr>
+                        <th scope="col" class="text-left"><a href="#" class="sortable-link" name="trust_score_rank">Rank</a></th>
+                        <th scope="col" class="text-left"><a href="#" class="sortable-link" name="name">Name</a></th>
+                        <!-- <th scope="col">Liquidity</th> -->
+                        <th scope="col" class="text-right"><a href="#" class="sortable-link" name="trade_volume_24h_btc_normalized">Volume (24h)</a></th>
+                        <!-- <th scope="col">No. Markets</th> -->
+                        <!-- <th scope="col">Change (24h)</th> -->
+                        <!-- <th scope="col">Volume Graph (7d)</th> -->
+                    </tr>
+                </table>
+                <!-- pagination -->
+                <nav class="mt-2" aria-label="Page navigation">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item app-page-prev">
+                            <a class="page-link app-page-prev" href="#">Prev 100</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link app-page-next" href="#">Next 100</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <script src="/assets/js/utils.js"></script>
+        <script src="/assets/js/exchanges.js"></script>
+    </body>
+</html>
