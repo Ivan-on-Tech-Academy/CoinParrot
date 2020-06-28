@@ -1,5 +1,9 @@
 /* Get the coin market data from the CoinGecko API
    see the docs here https://www.coingecko.com/en/api
+
+   Note: the live data is only refreshed when:
+      * The page (re)loads
+      * When a column is sorted
 */
 const DATA_SOURCES = {
     test: {
@@ -15,12 +19,15 @@ const DATA_SOURCE = DATA_SOURCES.live;
 const PAGE_SIZE = 100;
 let curPageNum = 1;
 
-async function refreshTabe() {
+// re-draw the table of coins
+async function refreshTable() {
     let data = await getCoinData();
     createCoinTable(data);
 }
-refreshTabe();
+refreshTable();
 
+// use fetch to get the data
+// https://github.com/github/fetch
 function getCoinData() {
     let url = DATA_SOURCE.baseUrl;
     if (DATA_SOURCE.name === DATA_SOURCES.live.name) {
@@ -66,12 +73,22 @@ function createCoinTable(coinData) {
     }
 }
 
+/* Sorting
+   - Use the class .sortable-link as a hook to bind
+   a click event to all the <a> in the table column headers
+   
+   - The <a> property "name" will contain the column name
+   from the API data being sorted on
+
+   - The sort functions are in utils.js
+*/
 $('a.sortable-link').click(function () {
+    // get the <a> that was clicked
     let target = $('this');
     let a = target.prevObject[0].activeElement;
     console.log('sortable-link clicked: ', a);
     
-    // sort the list
+    // sort the list (see utils.js)
     let order = getSortOrder(a.name);
     sortCoinList(a.name, order);
 });
@@ -83,7 +100,13 @@ async function sortCoinList(byColumnName, order) {
     createCoinTable(data);
 }
 
-// Pagination
+/* Pagination
+   - Use the classes .app-page-next and .app-page-prev
+   to bind click events to the buttons and hide or show as needed
+
+   - Use curPageNum var to keep track of the current page number
+*/
+
 // Next
 let prevButton = $('a.app-page-prev');
 
@@ -92,7 +115,7 @@ $('a.app-page-next').click(function() {
         return; //test data is static
     }
     curPageNum += 1;    
-    refreshTabe();
+    refreshTable();
     hideShowPrev();
 });
 
@@ -102,7 +125,7 @@ $('a.app-page-prev').click(function() {
         return; // already at first page
     }    
     curPageNum -= 1;
-    refreshTabe();
+    refreshTable();
     hideShowPrev();
 });
 

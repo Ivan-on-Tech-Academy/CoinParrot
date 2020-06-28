@@ -1,5 +1,8 @@
 /* Get the exchange data from the CoinGecko API
    see the docs here https://www.coingecko.com/en/api
+
+   Note: this page is pretty much identical to the index page
+   with different data and therefore different table columns
 */
 const DATA_SOURCES = {
     test: {
@@ -15,12 +18,15 @@ const DATA_SOURCE = DATA_SOURCES.live;
 const PAGE_SIZE = 100;
 let curPageNum = 1;
 
-async function refreshTabe() {
+// re-draw the table of exchanges
+async function refreshTable() {
     let data = await getData();
     createTable(data);
 }
-refreshTabe();
+refreshTable();
 
+// use fetch to get the data
+// https://github.com/github/fetch
 function getData() {
     let url = DATA_SOURCE.baseUrl;
     if (DATA_SOURCE.name == DATA_SOURCES.live.name) {
@@ -61,6 +67,15 @@ function createTable(data) {
     }
 }
 
+/* Sorting
+   - Use the class .sortable-link as a hook to bind
+   a click event to all the <a> in the table column headers
+   
+   - The <a> property "name" will contain the column name
+   from the API data being sorted on
+
+   - The sort functions are in utils.js
+*/
 $('a.sortable-link').click(function () {
     let target = $('this');
     let a = target.prevObject[0].activeElement;
@@ -77,7 +92,13 @@ async function sortExchangeList(byColumnName, order) {
     createTable(data);
 }
 
-// Pagination
+/* Pagination
+   - Use the classes .app-page-next and .app-page-prev
+   to bind click events to the buttons and hide or show as needed
+
+   - Use curPageNum var to keep track of the current page number
+*/
+
 // Next
 let prevButton = $('a.app-page-prev');
 
@@ -86,7 +107,7 @@ $('a.app-page-next').click(function() {
         return; //test data is static
     }
     curPageNum += 1;    
-    refreshTabe();
+    refreshTable();
     hideShowPrev();
 });
 
@@ -96,7 +117,7 @@ $('a.app-page-prev').click(function() {
         return; // already at first page
     }    
     curPageNum -= 1;
-    refreshTabe();
+    refreshTable();
     hideShowPrev();
 });
 
