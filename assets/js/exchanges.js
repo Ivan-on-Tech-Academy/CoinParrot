@@ -21,7 +21,8 @@ let curPageNum = 1;
 // re-draw the table of exchanges
 async function refreshTable() {
     let data = await getData();
-    createTable(data);
+    let price = await getPrice();
+    createTable(data, price);
 }
 refreshTable();
 
@@ -44,8 +45,27 @@ function getData() {
         });
 }
 
-function createTable(data) {
+function getPrice(){
+     let url = DATA_SOURCE.baseUrl;
+    if (DATA_SOURCE.name == DATA_SOURCES.live.name) {
+        url += `/simple/price?ids=bitcoin&vs_currencies=usd`;
+    } 
+    console.log('api url: ', url);
+    return fetch(url)
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            console.log(`fetch returnd ${data.length} results`);
+            return data;
+        }).catch(function (error) {
+            console.log(error);
+        });
+}
+
+function createTable(data, price) {
     console.log('creatting exchanges table');
+    //Price of 1 BTC
+    const final = price.bitcoin.usd;
     // clear out any old elements
     $('tr.content-row').remove();
     const coinTable = $('#exchangeTable');
@@ -61,6 +81,7 @@ function createTable(data) {
                     $('<div></div>').append(
                         `<img src="${exchange.image}" width="16" height="16"> ${exchange.name}`
                     )),
+                $('<td class="text-right"></td>').text('$'+fmt.n0.format(parseInt(exchange.trade_volume_24h_btc_normalized)*parseInt(final))),
                 $('<td class="text-right"></td>').text(fmt.n0.format(exchange.trade_volume_24h_btc_normalized) + ' BTC'),
             )
         );
@@ -88,8 +109,9 @@ $('a.sortable-link').click(function () {
 async function sortExchangeList(byColumnName, order) {
     console.log(`sort coin list by ${byColumnName}`);
     data = await getData();
-    sortData(data, byColumnName, order);
-    createTable(data);
+    price = await price();
+    sortData(data, price, byColumnName, order);
+    createTable(data, price);
 }
 
 /* Pagination
