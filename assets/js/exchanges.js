@@ -109,8 +109,8 @@ $('a.sortable-link').click(function () {
 async function sortExchangeList(byColumnName, order) {
     console.log(`sort coin list by ${byColumnName}`);
     data = await getData();
-    price = await price();
-    sortData(data, price, byColumnName, order);
+    price = await getPrice();
+    sortData(data, byColumnName, order);
     createTable(data, price);
 }
 
